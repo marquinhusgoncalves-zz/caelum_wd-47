@@ -1,0 +1,7 @@
+body {
+	padding: 2em;
+}
+
+.error {
+	border-color: red !important;
+}

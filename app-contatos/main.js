@@ -41,14 +41,20 @@
 
 	box.refresh = function(){
 		if(localStorage && localStorage.contatos) {
-			var lista = JSON.parse(localStorage.contatos);
-			console.table(lista);
+			var contatos = JSON.parse(localStorage.contatos);
+			var html = "";
+			contatos.forEach(function(contato){
+			html += "<li>" + contato.email + "</li>";
+			});
+			//console.log(html);
+			box.list.innerHTML = html;
 		}
 	};
 
 	box.init = function(){
 		//box.add.onclick = box.validade;
 		box.add.addEventListener("click", box.validade);
+		box.refresh();
 
 	}();
 
