@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Carros</title>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link rel="stylesheet" href="carros.css">
+</head>
+<body ng-controller="carros">
+	<h1>{{empresa}} Veículos</h1>
+	<h2>A {{2015-1980}} anos com você</h2>
+
+	<form class="pure-form pure-form-aligned">
+	    <fieldset>
+	        <div class="pure-control-group">
+	            <label for="fabricante">Fabricante</label>
+	            <input id="fabricante" type="text" placeholder="Fabricante" ng--model="fabricante">
+	        </div>
+
+	        <div class="pure-control-group">
+	            <label for="modelo">Modelo</label>
+	            <input id="modelo" type="text" placeholder="Modelo" ng--model="modelo">
+	        </div>
+
+	        <div class="pure-control-group">
+	            <label for="ano">Ano</label>
+	            <input id="ano" type="text" placeholder="Ano" ng--model="ano">
+	        </div>
+
+	        <div class="pure-controls">
+	            <button type="submit" class="pure-button pure-button-primary" ng-show="btAdd" ng-click="addItem()">Adicionar</button>
+	            <button type="submit" class="pure-button pure-button-primary" ng-show="btUpd" ng-click="updateItem()">Atualizar</button>
+	        </div>
+	    </fieldset>
+	</form>
+
+	<hr>
+
+	<table class="pure-table pure-table-horizontal">
+	    <thead>
+	        <tr>
+	            <th>#</th>
+	            <th>Fabricante</th>
+	            <th>Modelo</th>
+	            <th>Ano</th>
+	            <th>Ações</th>
+	        </tr>
+	    </thead>
+
+	    <tbody>
+	        <tr ng-repeat="carro in carros">
+	            <td>{{$index+1}}</td>
+	            <td>{{carro.fabricante}}</td>
+	            <td>{{carro.modelo}}</td>
+	            <td>{{carro.ano}}</td>
+	            <td>
+	            	<a href="#" class="pure-button pure-button-primary" ng-click="editItem($index,$event)">Editar</a> | 
+	            	<a href="#" class="pure-button pure-button-primary" ng-click="removeItem($index,$event)">Excluir</a>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+	<script src="carros.js"></script>
+</body>
+</html>
